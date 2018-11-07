@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Flats (<%= @flats.count %>)</h1>
+
+  <div class="container">
+    <!-- <div class="row"> -->
+    <% @flats.each do |flat| %>
+      <div class="card">
+          <div class="data">
+          <h3><strong><%= flat.name %></strong></h3><br>
+          <h4><%= flat.address %></h4><br>
+          <!-- <p><%= flat.description %></p><br> -->
+          <p><%= flat.price_per_night %><i class="fas fa-euro-sign"></i> - <%= flat.number_of_guests %><i class="fas fa-users"></i></p>
+        </div>
+        <div><%= link_to 'More info', flat %><%= link_to 'Edit', edit_flat_path(flat) %><%= link_to 'Remove', flat, method: :delete %></div>
+
+      </div>
+    <% end %>
+    <!-- </div> -->
+  </div>
+
+<br>
+<%= form_tag search_flats_path, method: :get do %>
+  <%= text_field_tag :search,
+    params[:search], placeholder: "search",
+    class: "form-control" %>
+<% end %>
+<br>
+<%= link_to 'Add flat', new_flat_path, class:"btn" %>

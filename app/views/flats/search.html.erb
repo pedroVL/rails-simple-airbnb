@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Flats (<%= @flats.count %>)</h1>
+
+  <div class="container">
+    <% @flats.each do |flat| %>
+      <div class="card">
+          <div class="data">
+          <h3><strong><%= flat.name %></strong></h3><br>
+          <h4><%= flat.address %></h4><br>
+          <p><%= flat.price_per_night %><i class="fas fa-euro-sign"></i> - <%= flat.number_of_guests %><i class="fas fa-users"></i></p>
+        </div>
+        <div><%= link_to 'More info', flat %><%= link_to 'Edit', edit_flat_path(flat) %><%= link_to 'Remove', flat, method: :delete %></div>
+
+      </div>
+    <% end %>
+  </div>
+
+<br>
